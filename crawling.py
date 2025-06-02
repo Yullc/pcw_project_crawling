@@ -52,6 +52,9 @@ while True:
 
             address = item.find_element(By.CSS_SELECTOR, "span.Pb4bU").text
 
+            ActionChains(driver).move_to_element(item).perform()
+            time.sleep(0.5)
+
             try:
                 detail_address = item.find_element(By.CSS_SELECTOR, "span.hAvkz").text
             except:
@@ -60,6 +63,8 @@ while True:
             try:
                 img = item.find_element(By.CSS_SELECTOR, "img.K0PDV")
                 img_url = img.get_attribute("src")
+                if not img_url:  # src가 비어있으면 data-src 확인
+                    img_url = img.get_attribute("data-src")
             except:
                 img_url = ""
 
