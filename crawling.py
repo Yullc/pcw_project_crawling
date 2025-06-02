@@ -67,6 +67,8 @@ for region in regions:
                 address = item.find_element(By.CSS_SELECTOR, "span.Pb4bU").text
 
                 try:
+                    driver.execute_script("arguments[0].scrollIntoView(true);", item)
+                    time.sleep(0.7)
                     img = item.find_element(By.CSS_SELECTOR, "img.K0PDV")
                     img_url = img.get_attribute("src") or img.get_attribute("data-src")
                 except:
